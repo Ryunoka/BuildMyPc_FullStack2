@@ -1,12 +1,13 @@
 :root {
-  --fondo: #0d204d;         /* fondo general, azul muy oscuro   */
+  --fondo: #101410;         /* fondo general, azul muy oscuro   */
   --superficie: #1e293b;    /* fondo de las tarjetas            */
   --superficie-2: #273449;  /* fondo de elementos secundarios   */
-  --borde: #334155;         /* lineas y separadores             */
-  --texto: #e2e8f0;         /* texto principal                  */
+  --borde: #858e9b;         /* lineas y separadores             */
+  --texto: #EDF2E6;         /* texto principal                  */
   --texto-suave: #94a3b8;   /* texto secundario / descripciones */
-  --primario: #38bdf8;      /* color de marca (celeste)         */
-  --acento: #c084fc;        /* morado                           */
+  --primario: #76B900;      /* color de marca (celeste)         */
+  --acento: #B4FF3C;        /* morado                           */
+  --error: #FF5C5C;        /* rojo para errores                */
   --radio: 12px;            /* redondeo estandar                */
   --sombra: 0 10px 30px rgba(0, 0, 0, 0.35);
   --fuente: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -24,6 +25,57 @@ section {
   margin-bottom: 48px;
 }
 
+
+
+.hero {
+  background-color: var(--color-superficie);
+  padding: 3rem 2rem;
+  border-radius: var(--radio-borde);
+  margin: 2rem auto;
+  max-width: 1200px;
+  text-align: center;
+  border: 1px solid rgba(118, 185, 0, 0.2);
+}
+
+.hero h2 {
+  font-size: 2.2rem;
+  color: var(--color-primario);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--color-texto);
+  margin-bottom: 1.8rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- ESTILO DE BOTÓN PARA ENLACES (<a>) --- */
+.boton-primario {
+  display: inline-block;          /* Permite aplicar padding, width y height a un <a> */
+  background-color: var(--color-primario);
+  color: var(--color-texto);                 /* Texto oscuro para asegurar contraste >= 4.5:1 */
+  font-weight: bold;
+  text-decoration: none;          /* Quita el subrayado del enlace */
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radio-borde);
+  transition: var(--transicion-suave);
+  box-shadow: 0 4px 6px rgba(197, 183, 183, 0.3);
+}
+
+/* Efecto al pasar el cursor */
+.boton-primario:hover {
+  background-color: var(--color-acento);
+  transform: translateY(-2px);    /* Efecto de elevación al pasar el mouse */
+  box-shadow: 0 6px 12px rgba(180, 255, 60, 0.2);
+}
+
+/* Efecto al hacer clic */
+.boton-primario:active {
+  transform: translateY(0);
+}
 
 body {
   background: var(--fondo);
@@ -166,18 +218,12 @@ h1{
 
 /* Franja de color superior, distinta por nivel */
 
-
-
-
-
 .tarjeta p {
   color: var(--texto-suave);
   font-size: 1.2rem;
   flex: 1;                   /* empuja las etiquetas hacia abajo */
   margin-bottom: 16px;
 }
-
-
 
 .temas span {
   font-family: var(--mono);
@@ -213,7 +259,6 @@ h1{
   padding-top: 14px;
   border-top: 1px solid var(--borde);
 }
-
 .btn {
   flex: 1;                    /* los dos botones reparten el ancho a partes iguales */
   text-align: center;
@@ -307,4 +352,72 @@ footer {
 @media (max-width: 640px) {
   .contenedor { padding: 28px 0 56px; }
   body { font-size: 16px; }
+}
+
+header {
+  background-color: var(--color-superficie);
+  padding: 1rem 2rem;
+  border-bottom: 2px solid var(--color-primario);
+  display: flex;
+  justify-content: space-between; /* Alinea el título a la izquierda y el menú a la derecha */
+  align-items: center;            /* Centra verticalmente los elementos */
+  flex-wrap: wrap;                /* Se adapta en pantallas pequeñas */
+  gap: 1rem;
+}
+
+/* Título de la cabecera */
+header .contenedor h1 {
+  font-size: 1.8rem;
+  color: var(--color-primario);
+}
+
+header .contenedor p {
+  font-size: 0.9rem;
+  color: var(--color-texto);
+  opacity: 0.8;
+}
+
+/* --- LISTA HORIZONTAL (Flexbox) --- */
+nav ul {
+  display: flex;                /* Convierte la lista en un contenedor horizontal */
+  list-style: none;             /* Elimina las viñetas (puntos) de la lista */
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;                  /* Espaciado uniforme entre cada opción del menú */
+}
+
+/* Enlaces del menú */
+nav a {
+  color: var(--color-texto);
+  text-decoration: none;        /* Quita el subrayado predeterminado */
+  font-weight: 600;
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--radio-borde);
+  transition: var(--transicion-suave);
+}
+
+/* Efectos al pasar el cursor (Hover) */
+nav a:hover {
+  background-color: var(--color-primario);
+  color: #101410;               /* Fondo verde con texto oscuro para contraste */
+}
+
+/* --- MAPA DE UBICACIÓN --- */
+.mapa-contenedor {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--borde);
+}
+
+.mapa-contenedor h4 {
+  color: var(--primario);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.mapa-contenedor iframe {
+  width: 100%;
+  border-radius: var(--radio-borde);
+  border: 1px solid var(--borde);
+  margin-top: 12px;
 }
