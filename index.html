@@ -1,69 +1,269 @@
 <!DOCTYPE html>
 <html lang="es">
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Presentacion 1 BuildMyPc Fullstack2</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Proyecto de fullstack2 DuocUc">
-        <meta name="author" content="Kevin, Gabriel">
 
-        <link rel = "stylesheet" href = "css/estilos.css">
-        
-        <!--EL orden del proyecto importa, compartiran un archivo global
-        
-        aqui van archivos js referenciados, utilidades, 
-            datos (catalogo y carga simulada),
-            clases (tienda.producto, tienda.carrito, etc.)
-            y por ultimo app (arranca la app y escucha los eventos)
-            ej: <script src="js/05-app.js" defer></script> -->
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="BuildMyPC permite crear configuraciones de computadores, revisar compatibilidad y solicitar cotizaciones.">
+
+    <title>BuildMyPC - Configura tu computador</title>
+
+    <!-- CSS EXTERNO -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         ENCABEZADO PRINCIPAL
+    ========================== -->
+    <header>
+
+        <div class=".contenedor">
+            <h1>BuildMyPC</h1>
+            <p>Construye tu computador ideal</p>
+        </div>
+
+        <!-- =========================
+             NAVEGACIÓN PRINCIPAL
+        ========================== -->
+        <nav aria-label="Navegación principal">
+
+            <ul>
+                <li>
+                    <a href="index.html">Inicio</a>
+                </li>
+
+                <li>
+                    <a href="catalogo/catalogo.html">Catálogo</a>
+                </li>
+
+                <li>
+                    <a href="builds/builds.html">Mis Builds</a>
+                </li>
+
+                <li>
+                    <a href="compatibilidad/compatibilidad.html">Compatibilidad</a>
+                </li>
+
+                <li>
+                    <a href="rendimiento/rendimiento.html">Rendimiento</a>
+                </li>
+
+                <li>
+                    <a href="cotizacion/cotizacion.html">Cotización</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
 
 
-    <body>
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+    <main>
 
-<header class = "cabecera">
-    <h1>Tienda BuildMyPc</h1>
+        <!-- =========================
+             SECCIÓN HERO
+        ========================== -->
+        <section class="hero">
 
-    <p class="subtitulo">
-        Buildmypc es una tienda con un catalogo en linea diseñado para
-        gamers,,.,.
-    </p>
+            <article>
 
-    <!-- INDICE DE SECCIONES-->
-    <nav class = "indice" aria-label="indice del proyecto">
-         <h2>Índice de secciones</h2>
-      <ol>
-        
-        <li><a href="#catalogo">La tienda: catálogo, buscador, filtros y orden</a></li>
-        <li><a href="#carrito">El carrito: cosas dentro del carro, eliminar carrito, etc</a></li>
-      </ol>
-      
+                <h2>Construye tu PC ideal</h2>
 
-    </nav>
-</header>
-        <main>
-            <section class="seccion" id="catalogo">
-                <h2><span class="indicador">01</span> La tienda: catálogo, buscador, filtros y orden</h2>
-        <p>
-          Catalogo de la tienda, contiene un buscador, todo 
-          los productos que buscas en un solo lugar.
-        </p>
-                <figure>
-                    
-                </figure>
-            </section>
-            <section id="" class="center-align">
+                <p>
+                    Selecciona tus componentes, crea configuraciones personalizadas
+                    y revisa la compatibilidad de tu computador.
+                </p>
 
-            </section>
-        </main>
-        <section id="">
-        <footer class="page-footer teal">
-    
-        </footer>
+                <a href="catalogo/catalogo.html">
+                    Ver catálogo de componentes
+                </a>
+
+            </article>
+
         </section>
-        
-        <!--  Scripts-->
-        
-    </body>
+
+
+        <!-- =========================
+             SECCIÓN DE FUNCIONALIDADES
+        ========================== -->
+        <section class="funcionalidades">
+
+            <h2>¿Qué puedes hacer en BuildMyPC?</h2>
+
+
+            <article class="tarjeta">
+
+                <h3> Crear una Build</h3>
+
+                <p>
+                    Selecciona procesador, tarjeta gráfica, memoria RAM,
+                    placa madre y fuente de poder para crear tu configuración.
+                </p>
+
+            </article>
+
+
+            <article class="tarjeta">
+
+                <h3>Revisar Compatibilidad</h3>
+
+                <p>
+                    Comprueba si los componentes seleccionados son compatibles
+                    entre sí antes de realizar tu compra.
+                </p>
+
+            </article>
+
+
+            <article class="tarjeta">
+
+                <h3>Consultar Rendimiento</h3>
+
+                <p>
+                    Revisa una estimación del rendimiento que podría tener
+                    tu computador según los componentes seleccionados.
+                </p>
+
+            </article>
+
+
+            <article class="tarjeta">
+
+                <h3>Solicitar Cotización</h3>
+
+                <p>
+                    Calcula el precio estimado de tu configuración
+                    y solicita una cotización.
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <!-- =========================
+             SECCIÓN DE ROLES
+        ========================== -->
+        <section class="roles">
+
+            <h2>Seleccionar perfil de prueba</h2>
+
+            <p>
+                Durante esta etapa del proyecto los roles son simulados.
+                Selecciona un perfil para visualizar las funcionalidades disponibles.
+            </p>
+
+
+            <form id="formularioRol">
+
+                <label for="rolUsuario">
+                    Selecciona tu rol:
+                </label>
+
+                <select id="rolUsuario" name="rolUsuario">
+
+                    <option value="visitante">
+                        Visitante
+                    </option>
+
+                    <option value="usuario">
+                        Usuario
+                    </option>
+
+                    <option value="tecnico">
+                        Técnico
+                    </option>
+
+                    <option value="administrador">
+                        Administrador
+                    </option>
+
+                </select>
+
+
+                <button type="button" id="btnSeleccionarRol">
+                    Seleccionar perfil
+                </button>
+
+            </form>
+
+
+            <p id="mensajeRol">
+                Rol actual: Visitante
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             INFORMACIÓN DEL SISTEMA
+        ========================== -->
+        <section class="informacion">
+
+            <h2>Sobre BuildMyPC</h2>
+
+            <article>
+
+                <h3>Configura con confianza</h3>
+
+                <p>
+                    BuildMyPC es una plataforma que permite crear configuraciones
+                    de computadores utilizando diferentes componentes de hardware.
+                </p>
+
+                <p>
+                    Los usuarios podrán revisar compatibilidad, rendimiento estimado
+                    y solicitar cotizaciones de sus builds.
+                </p>
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         PIE DE PÁGINA
+    ========================== -->
+    <footer>
+
+        <p>
+            &copy; 2026 BuildMyPC. Todos los derechos reservados.
+        </p>
+
+        <nav aria-label="Navegación secundaria">
+
+            <ul>
+                <li>
+                    <a href="#">Contacto</a>
+                </li>
+
+                <li>
+                    <a href="#">Términos y condiciones</a>
+                </li>
+
+                <li>
+                    <a href="#">Política de privacidad</a>
+                </li>
+            </ul>
+
+        </nav>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT EXTERNO -->
+    <script src="js/app.js"></script>
+
+</body>
+
 </html>
