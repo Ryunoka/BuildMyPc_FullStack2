@@ -39,9 +39,9 @@ section {
 }
 
 .hero {
-  background-color: var(--color-superficie);
+  background-color: var(--superficie);
   padding: 3rem 2rem;
-  border-radius: var(--radio-borde);
+  border-radius: var(--radio);
   margin: 2rem auto;
   max-width: 1200px;
   text-align: center;
@@ -50,28 +50,34 @@ section {
 
 .hero h2 {
   font-size: 2.2rem;
-  color: var(--color-primario);
+  color: var(--primario);
   margin-bottom: 1rem;
 }
 
 .hero p {
   font-size: 1.1rem;
-  color: var(--color-texto);
+  color: var(--texto);
   margin-bottom: 1.8rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
+.tarjeta.centrado {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
 /* --- ESTILO DE BOTÓN PARA ENLACES (<a>) --- */
 .boton-primario {
   display: inline-block;          /* Permite aplicar padding, width y height a un <a> */
-  background-color: var(--color-primario);
-  color: var(--color-texto);                 /* Texto oscuro para asegurar contraste >= 4.5:1 */
+  background-color: var(--primario);
+  color: var(--texto);                 /* Texto oscuro para asegurar contraste >= 4.5:1 */
   font-weight: bold;
   text-decoration: none;          /* Quita el subrayado del enlace */
   padding: 0.8rem 1.6rem;
-  border-radius: var(--radio-borde);
+  border-radius: var(--radio);
   transition: var(--transicion-suave);
   box-shadow: 0 4px 6px rgba(197, 183, 183, 0.3);
 }
@@ -366,14 +372,14 @@ footer {
 }
 
 header {
-  background-color: var(--color-superficie);
-  padding: 1rem 2rem;
-  border-bottom: 2px solid var(--color-primario);
-  display: flex;
-  justify-content: space-between; /* Alinea el título a la izquierda y el menú a la derecha */
-  align-items: center;            /* Centra verticalmente los elementos */
-  flex-wrap: wrap;                /* Se adapta en pantallas pequeñas */
-  gap: 1rem;
+    background-color: var(--superficie);
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--primario);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 /* Título de la cabecera */
@@ -399,18 +405,18 @@ nav ul {
 
 /* Enlaces del menú */
 nav a {
-  color: var(--color-texto);
-  text-decoration: none;        /* Quita el subrayado predeterminado */
-  font-weight: 600;
-  padding: 0.5rem 0.8rem;
-  border-radius: var(--radio-borde);
-  transition: var(--transicion-suave);
+    color: var(--texto);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    border-radius: var(--radio);
+    transition: 0.2s ease;
 }
 
 /* Efectos al pasar el cursor (Hover) */
 nav a:hover {
-  background-color: var(--color-primario);
-  color: #101410;               /* Fondo verde con texto oscuro para contraste */
+    background-color: var(--primario);
+    color: #101410;
 }
 
 /* --- MAPA DE UBICACIÓN --- */
