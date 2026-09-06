@@ -2,129 +2,127 @@
 <html lang="es">
 
 <head>
-    <!-- Configuración de caracteres -->
     <meta charset="UTF-8">
-
-    <!-- Adaptación para celulares -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Título de la pestaña -->
-    <title>Catalogo </title>
-
-    <!-- Conectar archivo CSS -->
+    <title>BuildMyPC - Catálogo de Componentes</title>
+    <!-- Conexión a la hoja externa única compartida -->
     <link rel="stylesheet" href="../css/estilos.css">
 </head>
 
 <body>
 
-  <header>
-        <h1>BuildMyPC</h1>
-        <p>Encuentra los mejores productos</p>
-    </header>
-
-    <!-- MENÚ -->
+    <!-- CABECERA DE LA PÁGINA -->
+    <header>
+        <div class=".contenedor">
+            <h1>BuildMyPC</h1>
+            <p>Construye tu computador ideal</p>
+        </div>
+        <!-- =========================
+             NAVEGACIÓN PRINCIPAL
+        ========================== -->
         <nav aria-label="Navegación principal">
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="../catalogo/catalogo.html">Catálogo</a></li>
                 <li><a href="../builds/build.html">MisBuilds</a></li>
                 <li><a href="../compatibilidad/compatibilidad.html">Compatibilidad</a></li>
-                <li><a href="../rendimiento/rendimiento.html">Rendimiento</a></li>
                 <li><a href="../cotizacion/cotizacion.html">Cotización</a></li>
             </ul>
         </nav>
-
+    </header>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <main>
+    <main class="contenedor">
 
-        <h2>Catálogo de Productos</h2>
+        <!-- PORTADA Y TITULAR -->
+        <section class="portada">
+            <span class="etiqueta">Catálogo de Hardware</span>
+            <h1 class="titulo-degradado">Componentes Disponibles</h1>
+            <p>Filtra y selecciona las piezas compatibles para armar tu configuración personalizada.</p>
+        </section>
 
+        <!-- FORMULARIO DE BÚSQUEDA Y FILTRADO (Exigencia EP1) -->
+        <section class="panel">
+            <form id="form-filtros" novalidate>
+                <div class="datos" style="justify-content: flex-start; margin-top: 0;">
+                    
+                    <!-- Buscador por texto -->
+                    <div style="flex: 1; min-width: 220px;">
+                        <label for="buscar-texto">Buscar componente:</label>
+                        <input type="text" id="buscar-texto" placeholder="Ej. Intel, Kingston, RTX..." autocomplete="off" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--borde); background: var(--fondo); color: var(--texto);">
+                    </div>
 
-        <!-- CONTENEDOR DE PRODUCTOS -->
-        <section class="catalogo">
+                    <!-- Filtro por tipo -->
+                    <div style="min-width: 180px;">
+                        <label for="filtro-tipo">Categoría:</label>
+                        <select id="filtro-tipo" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--borde); background: var(--fondo); color: var(--texto);">
+                            <option value="todos">Todas las categorías</option>
+                            <option value="CPU">Procesadores (CPU)</option>
+                            <option value="GPU">Tarjetas Gráficas (GPU)</option>
+                            <option value="RAM">Memorias RAM</option>
+                            <option value="Placa">Placas Madres</option>
+                            <option value="Almacenamiento">Almacenamiento</option>
+                            <option value="Fuente">Fuentes de Poder</option>
+                        </select>
+                    </div>
 
+                    <!-- Rango de Precio Mínimo -->
+                    <div style="min-width: 130px;">
+                        <label for="precio-min">Precio mín ($):</label>
+                        <input type="number" id="precio-min" min="0" placeholder="0" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--borde); background: var(--fondo); color: var(--texto);">
+                    </div>
 
-            <!-- PRODUCTO 1 -->
-            <article class="producto">
+                    <!-- Rango de Precio Máximo -->
+                    <div style="min-width: 130px;">
+                        <label for="precio-max">Precio máx ($):</label>
+                        <input type="number" id="precio-max" min="0" placeholder="9999999" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--borde); background: var(--fondo); color: var(--texto);">
+                    </div>
 
-                <img src="../img/producto1.jpg" alt="Producto 1">
+                </div>
 
-                <h3> Procesador intel core i7
-            
-                </h3>
+                <!-- Contenedor para mensajes de error de validación -->
+                <div id="mensaje-error-filtro" class="mensaje-error" style="margin-top: 10px;"></div>
+            </form>
+        </section>
 
-                <p>potente procesador 20 nucleos </p>
-
-                <p class="precio">$360.000</p>
-
-                <button>Agregar al carrito</button>
-
-            </article>
-
-
-            <!-- PRODUCTO 2 -->
-            <article class="producto">
-                <a href="../vista%20especifica/Ram.html" style="color: inherit; text-decoration: none;">
-                    <img src="../img/producto2.jpg" alt="Memoria RAM Kingston 16GB">
-                </a>
-                <h3>
-                    <a href="../vista%20especifica/Ram.html" style="color: inherit; text-decoration: none;">
-                        Memoria RAM Kingston 16gb
-                    </a>
-                </h3>
-                <p>Descripción breve del producto.</p>
-                <p class="precio">$24.990</p>
-                <button type="button">Agregar al carrito</button>
-            </article>
-
-
-            <!-- PRODUCTO 3 -->
-            <article class="producto">
-
-                <img src="../img/producto3.jpg" alt="Producto 3">
-
-                <h3>Disco Duro SSD 1TB</h3>
-
-                <p>Almacenamiento de alto rendimiento para tu sistema.</p>
-
-                <p class="precio">$000000</p>
-
-                <button>Agregar al carrito</button>
-
-            </article>
-
-
-            <!-- PRODUCTO 4 -->
-            <article class="producto">
-
-                <img src="../img/producto4.jpg" alt="Producto 4">
-
-                <h3>Tarjeta Gráfica RTX 3080</h3>
-
-                <p>Tarjeta gráfica de alto rendimiento para gaming y creación de contenido.</p>
-
-                <p class="precio">$149.990</p>
-
-                <button>Agregar al carrito</button>
-
-            </article>
-
-
+        <!-- SECCIÓN DONDE SE RENDERIZAN LOS PRODUCTOS DESDE JS -->
+        <section style="margin-top: 32px;">
+            <div id="contenedor-catalogo" class="rejilla">
+                <!-- Los componentes se cargarán dinámicamente desde data.js -->
+            </div>
         </section>
 
     </main>
 
-
-    <!-- PIE DE PÁGINA -->
+    <!-- PIE DE PÁGINA INFORMATIVO -->
     <footer>
-
-        <p>&copy; 2026 Mi Tienda - Todos los derechos reservados.</p>
-
-        <p>Contacto: contacto@mitienda.cl</p>
-
+        <p>
+            &copy; 2026 BuildMyPC. Todos los derechos reservados.
+            <p>Contacto: contacto@buildmypc.cl</p>
+        </p>
+        <nav aria-label="Navegación secundaria">
+            <ul>
+                <li>
+                    <a href="#">Contacto</a>
+                </li>
+                <li>
+                    <a href="#">Términos y condiciones</a>
+                </li>
+                <li>
+                    <a href="#">Política de privacidad</a>
+                </li>
+            </ul>
+        </nav>
     </footer>
+    <a href="../mantencion/mantencion.html">
+        <button type="button" class="btn-flotante" aria-label="Abrir imagen destacada">
+        <img src="../img/flotante.png" alt="Imagen flotante">
+        </button>
+    </a>
 
+    <!-- Archivos JavaScript (Datos y Manipulación del DOM) -->
+    <script src="../js/data.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

@@ -2,70 +2,158 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
-
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <title>Catalogo BuildMyPc</title>
-
-  
+    <title>BuildMyPC - Armador de Build</title>
+    <!-- Conexión a la hoja de estilos externa -->
     <link rel="stylesheet" href="../css/estilos.css">
 </head>
 
-
 <body>
 
-
     <header>
-        <h1>BuildMyPc</h1>
+        <div class=".contenedor">
+            <h1>BuildMyPC</h1>
+            <p>Construye tu computador ideal</p>
+        </div>
+        <!-- =========================
+             NAVEGACIÓN PRINCIPAL
+        ========================== -->
+        <nav aria-label="Navegación principal">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../catalogo/catalogo.html">Catálogo</a></li>
+                <li><a href="../builds/build.html">MisBuilds</a></li>
+                <li><a href="../compatibilidad/compatibilidad.html">Compatibilidad</a></li>
+                <li><a href="../cotizacion/cotizacion.html">Cotización</a></li>
+            </ul>
+        </nav>
     </header>
 
- 
-    <nav>
-        <ul>
-            <li><a href="../index.html">Inicio</a></li>
-            <li><a href="../catalogo/catalogo.html">Catálogo</a></li>
-            <li><a href="builds.html">Mis Builds</a></li>
-            <li><a href="../compatibilidad/compatibilidad.html">Compatibilidad</a></li>
-            <li><a href="../rendimiento/rendimiento.html">Rendimiento</a></li>
-            <li><a href="cotizacion.html">Cotización</a></li>
-        </ul>
-    </nav>
-
-
     <!-- Contenido principal -->
-    <main>
+    <main class="contenedor">
 
-
-        <section>
-
-            <h2>Título de la sección</h2>
-
-       
-            <article>
-                <h3>Título del artículo</h3>
-
-                <p>
-                    Aquí va el contenido de mi página web.
-                </p>
-            </article>
-
+        <section class="portada">
+            <span class="etiqueta">Configurador Personalizado</span>
+            <h1 class="titulo-degradado">Arma tu PC Gamer</h1>
+            <p>Selecciona los 5 componentes esenciales. Evaluaremos el consumo eléctrico y la compatibilidad en tiempo real.</p>
         </section>
+
+        <!-- LAYOUT DE 2 COLUMNAS (Flexbox/Grid) -->
+        <div class="rejilla" style="grid-template-columns: 1fr 340px; align-items: start;">
+
+            <!-- COLUMNA IZQUIERDA: SELECTORES DE COMPONENTES -->
+            <section class="panel">
+                <h3>1. Selección de Componentes</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 20px;">Elige una opción para cada categoría obligatoria:</p>
+
+                <form id="form-armador" style="display: flex; flex-direction: column; gap: 16px;">
+                    
+                    <!-- 1. Procesador (CPU) -->
+                    <div>
+                        <label for="select-cpu" style="font-weight: bold; display: block; margin-bottom: 4px;">Procesador (CPU):</label>
+                        <select id="select-cpu" style="width: 100%; padding: 10px; border-radius: var(--radio-borde); border: 1px solid var(--borde); background: var(--fondo); color: var(--texto);">
+                            <option value="">-- Seleccionar Procesador --</option>
+                        </select>
+                    </div>
+
+                    <!-- 2. Placa Madre -->
+                    <div>
+                        <label for="select-placa" style="font-weight: bold; display: block; margin-bottom: 4px;">Placa Madre:</label>
+                        <select id="select-placa" style="width: 100%; padding: 10px; border-radius: var(--radio-borde); border: 1px solid var(--borde); background: var(--fondo); color: var(--texto);">
+                            <option value="">-- Seleccionar Placa Madre --</option>
+                        </select>
+                    </div>
+
+                    <!-- 3. Memoria RAM -->
+                    <div>
+                        <label for="select-ram" style="font-weight: bold; display: block; margin-bottom: 4px;">Memoria RAM:</label>
+                        <select id="select-ram" style="width: 100%; padding: 10px; border-radius: var(--radio-borde); border: 1px solid var(--borde); background: var(--fondo); color: var(--texto);">
+                            <option value="">-- Seleccionar Memoria RAM --</option>
+                        </select>
+                    </div>
+
+                    <!-- 4. Tarjeta Gráfica (GPU) -->
+                    <div>
+                        <label for="select-gpu" style="font-weight: bold; display: block; margin-bottom: 4px;">Tarjeta Gráfica (GPU):</label>
+                        <select id="select-gpu" style="width: 100%; padding: 10px; border-radius: var(--radio-borde); border: 1px solid var(--borde); background: var(--fondo); color: var(--texto);">
+                            <option value="">-- Seleccionar Tarjeta Gráfica --</option>
+                        </select>
+                    </div>
+
+                    <!-- 5. Fuente de Poder (PSU) -->
+                    <div>
+                        <label for="select-fuente" style="font-weight: bold; display: block; margin-bottom: 4px;">Fuente de Poder:</label>
+                        <select id="select-fuente" style="width: 100%; padding: 10px; border-radius: var(--radio-borde); border: 1px solid var(--borde); background: var(--fondo); color: var(--texto);">
+                            <option value="">-- Seleccionar Fuente de Poder --</option>
+                        </select>
+                    </div>
+
+                </form>
+            </section>
+
+            <!-- COLUMNA DERECHA: PANEL LATERAL DE RESUMEN Y CONSUMO -->
+            <aside class="tarjeta" style="position: sticky; top: 20px;">
+                <h3 style="border-bottom: 1px solid var(--borde); padding-bottom: 10px; margin-bottom: 16px;">Resumen de la Build</h3>
+
+                <!-- Estado de la build -->
+                <div style="margin-bottom: 16px;">
+                    <span style="font-size: 0.85rem; color: var(--texto-suave);">Estado técnico:</span>
+                    <p id="estado-build" style="font-weight: bold; color: var(--alerta); margin-top: 2px;">⚠️ Borrador (Incompleto)</p>
+                </div>
+
+                <!-- Consumo acumulado en Watts -->
+                <div style="margin-bottom: 16px; background: var(--superficie-2); padding: 12px; border-radius: var(--radio-borde); border: 1px solid var(--borde);">
+                    <span style="font-size: 0.85rem; color: var(--texto-suave);">Consumo Estimado:</span>
+                    <p id="consumo-watts" style="font-size: 1.4rem; font-weight: bold; color: var(--texto); margin: 0;">0 W</p>
+                    <small id="margen-fuente" style="font-size: 0.75rem; color: var(--texto-suave);">Margen mínimo exigido: +20%</small>
+                </div>
+
+                <!-- Precio total acumulado -->
+                <div style="margin-bottom: 20px;">
+                    <span style="font-size: 0.85rem; color: var(--texto-suave);">Precio Parcial:</span>
+                    <p id="precio-total" style="font-size: 1.6rem; font-weight: bold; color: var(--primario); margin: 0;">$0</p>
+                </div>
+
+                <!-- Errores o incompatibilidades -->
+                <div id="mensaje-error-build" class="mensaje-error" style="margin-bottom: 16px;"></div>
+
+                <!-- Acciones de la vista -->
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <button type="button" id="btn-validar" class="btn-resuelto" style="width: 100%;">
+                        Validar Compatibilidad
+                    </button>
+                    <a href="../cotizacion/cotizacion.html" id="btn-cotizar" class="btn-plantilla" style="text-align: center; pointer-events: none; opacity: 0.5;">
+                        Solicitar Cotización &rarr;
+                    </a>
+                </div>
+            </aside>
+
+        </div>
 
     </main>
 
-
     <!-- Pie de página -->
     <footer>
-        <p>&copy; 2026 Mi sitio web. Todos los derechos reservados.</p>
+        <p>&copy; 2026 BuildMyPC. Todos los derechos reservados.</p>
+        <p>Contacto: contacto@buildmypc.cl</p>
+        <nav aria-label="Navegación secundaria">
+            <ul>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Términos y condiciones</a></li>
+                <li><a href="#">Política de privacidad</a></li>
+            </ul>
+        </nav>
     </footer>
-
+    <a href="../mantencion/mantencion.html">
+        <button type="button" class="btn-flotante" aria-label="Abrir imagen destacada">
+        <img src="../img/flotante.png" alt="Imagen flotante">
+        </button>
+    </a>
 
     <!-- Conectar JavaScript -->
-    <script src="js/app.js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/build.js"></script>
 
 </body>
 

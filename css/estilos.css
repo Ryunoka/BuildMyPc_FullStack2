@@ -438,3 +438,41 @@ nav a:hover {
   border: 1px solid var(--borde);
   margin-top: 12px;
 }
+
+/* ==========================================
+   BOTÓN FLOTANTE CON IMAGEN
+   ========================================== */
+
+.btn-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;              /* Ajusta el ancho según el tamaño deseado */
+  height: auto;             /* Mantiene la proporción de la imagen */
+  background: transparent;  /* Elimina el fondo del botón */
+  border: none;             /* Quita el borde y círculo */
+  padding: 0;
+  cursor: pointer;
+  z-index: 1000;
+  outline: none;            /* Quita el borde de enfoque por defecto */
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Ajuste de la imagen sin fondo */
+.btn-flotante img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Aplica sombra suave directo sobre la silueta transparente */
+  filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.4)); 
+}
+
+/* Efecto hover suave */
+.btn-flotante:hover {
+  transform: scale(1.1);
+}
+
+.btn-flotante:hover img {
+  /* Resplandor con verde silicio al pasar el cursor */
+  filter: drop-shadow(0px 0px 8px var(--primario)); 
+}
