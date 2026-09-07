@@ -103,6 +103,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+
+    const buildSeleccionada = {
+  cpu: cpu,
+  placa: placa,
+  ram: ram,
+  gpu: gpu,
+  fuente: fuente,
+  total: cpu.precio + placa.precio + ram.precio + gpu.precio + fuente.precio,
+  estado: "Compatible"
+};
+
+localStorage.setItem("buildSeleccionada", JSON.stringify(buildSeleccionada));
     // Si pasa todas las reglas:
     txtEstado.textContent = "Build Validada y Compatible";
     txtEstado.style.color = "var(--primario)";
@@ -114,6 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
     txtEstado.style.color = "var(--error)";
     bloquearCotizacion(true);
   }
+
+  
 
   function bloquearCotizacion(bloquear) {
     if (bloquear) {

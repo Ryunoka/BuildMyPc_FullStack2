@@ -476,3 +476,125 @@ nav a:hover {
   /* Resplandor con verde silicio al pasar el cursor */
   filter: drop-shadow(0px 0px 8px var(--primario)); 
 }
+
+.cotizacion-contenedor {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cotizacion-resumen h2,
+.cotizacion-total h2 {
+  color: var(--primario);
+  margin-bottom: 20px;
+}
+
+.componente-cotizacion {
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  gap: 15px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--borde);
+}
+
+.componente-cotizacion span {
+  color: var(--texto-suave);
+}
+
+.componente-cotizacion strong {
+  color: var(--texto);
+}
+
+.cotizacion-total h3 {
+  color: var(--primario);
+  font-size: 1.6rem;
+  margin: 10px 0 18px;
+}
+
+.cotizacion-total hr {
+  border: none;
+  border-top: 1px solid var(--borde);
+  margin: 20px 0;
+}
+
+.estado-compatible {
+  color: var(--primario);
+}
+
+.texto-secundario {
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+#form-cotizacion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+#form-cotizacion label {
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+#form-cotizacion input,
+#form-cotizacion textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: var(--superficie-2);
+  color: var(--texto);
+  font-family: var(--fuente);
+}
+
+#form-cotizacion input:focus,
+#form-cotizacion textarea:focus {
+  outline: 2px solid var(--primario);
+  border-color: var(--primario);
+}
+
+#form-cotizacion .boton-primario {
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#mensaje-cotizacion {
+  margin-top: 15px;
+  color: var(--primario);
+}
+
+@media (max-width: 800px) {
+  .cotizacion-contenedor {
+    grid-template-columns: 1fr;
+  }
+
+  .componente-cotizacion {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}
+
+.resumen-cotizacion {
+  margin-top: 25px;
+}
+
+.resumen-cotizacion h2 {
+  color: var(--primario);
+  margin-bottom: 15px;
+}
+
+.resumen-cotizacion p {
+  margin: 8px 0;
+}
+
+.resumen-cotizacion hr {
+  border: none;
+  border-top: 1px solid var(--borde);
+  margin: 15px 0;
+}

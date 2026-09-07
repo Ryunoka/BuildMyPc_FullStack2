@@ -1,76 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <!-- Configuración de caracteres -->
     <meta charset="UTF-8">
-    <!-- Adaptación para celulares -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Título de la pestaña -->
-     <title>BuildMyPC - Cotización</title>
-    <!-- Conectar archivo CSS -->
+    <meta name="description" content="Solicita una cotización para tu configuración de computador en BuildMyPC.">
+    <title>BuildMyPC - Cotización</title>
     <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
-    <!-- Encabezado de la página -->
-    <header>
-        <div class=".contenedor">
-            <h1>BuildMyPC</h1>
-            <p>Construye tu computador ideal</p>
-        </div>
-        <!-- =========================
-             NAVEGACIÓN PRINCIPAL
-        ========================== -->
-        <nav aria-label="Navegación principal">
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../catalogo/catalogo.html">Catálogo</a></li>
-                <li><a href="../builds/build.html">MisBuilds</a></li>
-                <li><a href="../compatibilidad/compatibilidad.html">Compatibilidad</a></li>
-                <li><a href="../cotizacion/cotizacion.html">Cotización</a></li>
-            </ul>
-        </nav>
-    </header>
-    <!-- Contenido principal -->
-    <main>
-        <section class="informacion">
-            <h2>Cotización</h2>
-            <article>
-                <h3>Solicita tu cotización</h3>
-                <p>
-                    Aquí podrás revisar el precio estimado de tu configuración
-                    y solicitar una cotización para tu computador.
-                </p>
-            </article>
-        </section>
-    </main>
-    <!-- Pie de página -->
-    <footer>
-        <p>
-            &copy; 2026 BuildMyPC. Todos los derechos reservados.
-        </p>
-        <nav aria-label="Navegación secundaria">
-            <ul>
-                <li>
-                    <a href="#">Contacto</a>
-                </li>
-                <li>
-                    <a href="#">Términos y condiciones</a>
-                </li>
-                <li>
-                    <a href="#">Política de privacidad</a>
-                </li>
-            </ul>
-        </nav>
-    </footer>
-    <a href="../mantencion/mantencion.html">
-        <button type="button" class="btn-flotante" aria-label="Abrir imagen destacada">
-        <img src="../img/flotante.png" alt="Imagen flotante">
-        </button>
-    </a>
-    <!-- Conectar JavaScript -->
-    <script src="../js/app.js"></script>
+<header>
+    <div class="contenedor-header">
+        <h1>BuildMyPC</h1>
+        <p>Construye tu computador ideal</p>
+    </div>
+    <nav aria-label="Navegación principal">
+        <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../catalogo/catalogo.html">Catálogo</a></li>
+            <li><a href="../builds/build.html">Mis Builds</a></li>
+            <li><a href="../compatibilidad/compatibilidad.html">Compatibilidad</a></li>
+            <li><a href="cotizacion.html">Cotización</a></li>
+        </ul>
+    </nav>
+</header>
 
+<main class="contenedor">
+    <section class="hero">
+        <article>
+            <h2>Cotización de tu Build</h2>
+            <p>Revisa los componentes de tu configuración y solicita una cotización estimada para tu computador.</p>
+        </article>
+    </section>
+
+    <section class="cotizacion-contenedor">
+        <article class="tarjeta cotizacion-resumen">
+            <h2>Resumen de componentes</h2>
+            <div class="componente-cotizacion">
+                <span>Procesador</span>
+                <strong id="cotizacion-cpu">Intel Core i7-13700K</strong>
+                <span>$360.000</span>
+            </div>
+            <div class="componente-cotizacion">
+                <span>Placa Madre</span>
+                <strong id="cotizacion-placa">ASUS TUF Gaming Z790-Plus</strong>
+                <span>$249.990</span>
+            </div>
+            <div class="componente-cotizacion">
+                <span>Memoria RAM</span>
+                <strong id="cotizacion-ram">Kingston Fury Beast 16GB DDR5</strong>
+                <span>$64.990</span>
+            </div>
+            <div class="componente-cotizacion">
+                <span>Tarjeta Gráfica</span>
+                <strong id="cotizacion-gpu">NVIDIA GeForce RTX 3080 10GB</strong>
+                <span>$649.990</span>
+            </div>
+            <div class="componente-cotizacion">
+                <span>Fuente de Poder</span>
+                <strong id="cotizacion-fuente">Corsair RM850x 850W</strong>
+                <span>$139.990</span>
+            </div>
+        </article>
+
+        <article class="tarjeta cotizacion-total">
+            <h2>Detalle de cotización</h2>
+            <p>Estado de la Build: <strong class="estado-compatible">Compatible</strong></p>
+            <p>Subtotal componentes:</p>
+            <h3 id="subtotal-cotizacion">$1.464.960</h3>
+            <p class="texto-secundario">El precio mostrado es una estimación y puede variar según disponibilidad.</p>
+            <hr>
+            <h3>Datos para solicitar cotización</h3>
+            <form id="form-cotizacion">
+                <label for="nombre-cotizacion">Nombre</label>
+                <input type="text" id="nombre-cotizacion" name="nombre" placeholder="Ingresa tu nombre" required>
+
+                <label for="correo-cotizacion">Correo electrónico</label>
+                <input type="email" id="correo-cotizacion" name="correo" placeholder="correo@ejemplo.cl" required>
+
+                <label for="telefono-cotizacion">Teléfono</label>
+                <input type="tel" id="telefono-cotizacion" name="telefono" placeholder="+56 9 1234 5678">
+
+                <label for="comentario-cotizacion">Comentarios</label>
+                <textarea id="comentario-cotizacion" name="comentario" rows="4" placeholder="Puedes agregar observaciones sobre tu configuración"></textarea>
+
+                <button type="submit" class="boton-primario">Solicitar cotización</button>
+            </form>
+            <p id="mensaje-cotizacion"></p>
+            <section id="resumen-cotizacion" class="tarjeta resumen-cotizacion" style="display:none;"></section>
+        </article>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 BuildMyPC. Todos los derechos reservados.</p>
+    <p>Contacto: contacto@buildmypc.cl</p>
+    <nav aria-label="Navegación secundaria">
+        <ul>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+        </ul>
+    </nav>
+</footer>
+
+<a href="../mantencion/mantencion.html">
+    <button type="button" class="btn-flotante" aria-label="Abrir mantenimiento">
+        <img src="../img/flotante.png" alt="Mantenimiento">
+    </button>
+</a>
+<script src="../js/cotizacion.js"></script>
 </body>
-
 </html>
