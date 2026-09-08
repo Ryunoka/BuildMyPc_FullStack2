@@ -94,5 +94,20 @@ const inventarioComponentes = [
     imagen: "../img/producto7.jpg",
     descontinuado: true,
     urlDetalle: "../vista%20especifica/GpuOld.html"
-  }
+  },
+
+  {
+  id: "cpu-002",
+  tipo: "CPU",
+  marca: "AMD",
+  modelo: "Ryzen 7 7700X",
+  precio: 350000,
+  socket: "AM5",
+  tdp: 105,
+  descripcion: "Procesador de alto rendimiento con 8 núcleos y 16 hilos.",
+  descontinuado: false,
+  imagen: "../img/producto8.jpg",
+}
+
+  
 ];

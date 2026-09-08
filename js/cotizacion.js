@@ -24,6 +24,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const build = JSON.parse(buildGuardada);
 
+  const estadoBuild = document.getElementById("estado-build");
+
+if (build.compatible === false) {
+  estadoBuild.textContent = "No compatible";
+  estadoBuild.style.color = "var(--error)";
+} else {
+  estadoBuild.textContent = "Compatible";
+  estadoBuild.style.color = "var(--primario)";
+}
+
+  const estadoCompatibilidad = document.getElementById("estado-compatibilidad");
+const motivoCompatibilidad = document.getElementById("motivo-compatibilidad");
+
+if (build.compatible === false) {
+  estadoCompatibilidad.textContent = "No compatible";
+  estadoCompatibilidad.style.color = "var(--error)";
+
+  motivoCompatibilidad.textContent =
+    build.motivo || "La build contiene componentes incompatibles.";
+
+  formulario.style.display = "none";
+} else {
+  estadoCompatibilidad.textContent = "Compatible";
+  estadoCompatibilidad.style.color = "var(--primario)";
+
+  motivoCompatibilidad.textContent = "";
+}
+
   function formatoPrecio(precio) {
     return new Intl.NumberFormat("es-CL", {
       style: "currency",

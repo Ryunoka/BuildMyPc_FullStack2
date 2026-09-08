@@ -70,62 +70,148 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 4. Reglas de Validación de Compatibilidad (Exigencia del Caso)
-  function evaluarCompatibilidad(cpu, placa, ram, gpu, fuente, watts) {
-    divError.textContent = "";
+ function evaluarCompatibilidad(cpu, placa, ram, gpu, fuente, watts) {
 
-    // Verificar si faltan componentes
-    if (!cpu || !placa || !ram || !gpu || !fuente) {
-      txtEstado.textContent = "Borrador (Incompleto)";
-      txtEstado.style.color = "var(--alerta)";
-      bloquearCotizacion(true);
-      return;
-    }
-
-    // Regla 1: Socket CPU == Socket Placa
-    if (cpu.socket !== placa.socket) {
-      divError.textContent = `Incompatible: Socket CPU (${cpu.socket}) no coincide con Placa (${placa.socket}).`;
-      marcarIncompatible();
-      return;
-    }
-
-    // Regla 2: Tipo Memoria RAM soportado por Placa
-    if (!placa.tiposMemoriaSoportados.includes(ram.tipoMemoria)) {
-      divError.textContent = `Incompatible: La placa no soporta memorias ${ram.tipoMemoria}.`;
-      marcarIncompatible();
-      return;
-    }
-
-    // Regla 3: Fuente de poder > Consumo estimado con margen del 20%
-    const wattsConMargen = watts * 1.2;
-    if (fuente.potenciaWatts < wattsConMargen) {
-      divError.textContent = `Incompatible: La fuente de ${fuente.potenciaWatts}W no cubre el consumo (${watts}W + 20% margen = ${Math.round(wattsConMargen)}W).`;
-      marcarIncompatible();
-      return;
-    }
-
-
-    const buildSeleccionada = {
-  cpu: cpu,
-  placa: placa,
-  ram: ram,
-  gpu: gpu,
-  fuente: fuente,
-  total: cpu.precio + placa.precio + ram.precio + gpu.precio + fuente.precio,
-  estado: "Compatible"
-};
-
-localStorage.setItem("buildSeleccionada", JSON.stringify(buildSeleccionada));
-    // Si pasa todas las reglas:
-    txtEstado.textContent = "Build Validada y Compatible";
-    txtEstado.style.color = "var(--primario)";
-    bloquearCotizacion(false);
+  // Si falta algún componente, todavía es borrador
+  if (!cpu || !placa || !ram || !gpu || !fuente) {
+    txtEstado.textContent = "Borrador (Incompleto)";
+    txtEstado.style.color = "";
+    localStorage.removeItem("buildSeleccionada");
+    bloquearCotizacion(true);
+    return;
   }
 
-  function marcarIncompatible() {
+  // GUARDAMOS SIEMPRE LOS COMPONENTES ACTUALES
+  const buildActual = {
+    cpu: cpu,
+    placa: placa,
+    ram: ram,
+    gpu: gpu,
+    fuente: fuente,
+    compatible: null,
+    motivo: ""
+  };
+
+  localStorage.setItem(
+    "buildSeleccionada",
+    JSON.stringify(buildActual)
+  );
+
+  // CPU + placa
+  if (cpu.socket !== placa.socket) {
     txtEstado.textContent = "Incompatible";
     txtEstado.style.color = "var(--error)";
+
+    buildActual.compatible = false;
+    buildActual.motivo =
+      `El socket del CPU (${cpu.socket}) no coincide con la placa (${placa.socket}).`;
+
+    localStorage.setItem(
+      "buildSeleccionada",
+      JSON.stringify(buildActual)
+    );
+
     bloquearCotizacion(true);
+    return;
   }
+
+  // RAM + placa
+  if (!placa.tiposMemoriaSoportados.includes(ram.tipoMemoria)) {
+    txtEstado.textContent = "Incompatible";
+    txtEstado.style.color = "var(--error)";
+
+    buildActual.compatible = false;
+    buildActual.motivo =
+      `La RAM ${ram.tipoMemoria} no es compatible con la placa.`;
+
+    localStorage.setItem(
+      "buildSeleccionada",
+      JSON.stringify(buildActual)
+    );
+
+    bloquearCotizacion(true);
+    return;
+  }
+
+  // Fuente
+  const wattsConMargen = Math.round(watts * 1.2);
+
+  if (fuente.potenciaWatts < wattsConMargen) {
+    txtEstado.textContent = "Incompatible";
+    txtEstado.style.color = "var(--error)";
+
+    buildActual.compatible = false;
+    buildActual.motivo =
+      `La fuente entrega ${fuente.potenciaWatts} W y se recomiendan ${wattsConMargen} W.`;
+
+    localStorage.setItem(
+      "buildSeleccionada",
+      JSON.stringify(buildActual)
+    );
+
+    bloquearCotizacion(true);
+    return;
+  }
+
+  // Si pasó todas las comprobaciones
+  buildActual.compatible = true;
+  buildActual.motivo = "Todos los componentes son compatibles.";
+
+  localStorage.setItem(
+    "buildSeleccionada",
+    JSON.stringify(buildActual)
+  );
+
+  txtEstado.textContent = "Build Validada y Compatible";
+  txtEstado.style.color = "var(--primario)";
+
+  bloquearCotizacion(false);
+}
+
+function marcarIncompatible(motivo) {
+  txtEstado.textContent = "Incompatible";
+  txtEstado.style.color = "red";
+
+  const buildActual = {
+    cpu: cpu,
+    placa: placa,
+    ram: ram,
+    gpu: gpu,
+    fuente: fuente,
+    compatible: false,
+    motivo: motivo
+  };
+
+  localStorage.setItem("buildSeleccionada", JSON.stringify(buildActual));
+
+  bloquearCotizacion(true);
+
+  if (cpu.socket !== placa.socket) {
+  const mensaje = `Socket CPU (${cpu.socket}) no coincide con Placa (${placa.socket}).`;
+  divError.textContent = mensaje;
+  marcarIncompatible(mensaje);
+  return;
+}
+
+if (cpu.socket !== placa.socket) {
+  const mensaje = `Socket CPU (${cpu.socket}) no coincide con Placa (${placa.socket}).`;
+  divError.textContent = mensaje;
+  marcarIncompatible(mensaje);
+  return;
+}
+
+const watts = 50 + (cpu.tdp || 0) + (gpu.tdp || 0);
+const wattsConMargen = Math.round(watts * 1.2);
+
+if (fuente.potenciaWatts < wattsConMargen) {
+  const mensaje = `La fuente entrega ${fuente.potenciaWatts} W y se recomiendan ${wattsConMargen} W.`;
+  divError.textContent = mensaje;
+  marcarIncompatible(mensaje);
+  return;
+}
+}
+
+
 
   
 
