@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
   const buildGuardada = localStorage.getItem("buildSeleccionada");
   const cpu = document.getElementById("cotizacion-cpu");
   const placa = document.getElementById("cotizacion-placa");
@@ -92,6 +92,28 @@ if (build.compatible === false) {
       estado: "Solicitada"
     };
 
+    ///funcion para calcular subtotal de la cotizacion
+    const idsSeeleccionados = [
+      build.cpu,
+      build.gpu,
+      build.ram
+];
+
+let subtotal = 0;
+idsSeeleccionados.forEach(id => {
+ const componente = componentes.find(comp => comp.id === id);
+ if (componente) {
+   subtotal += componente.precio;
+ }
+});
+
+document.getElementById("subtotal").textContent = "$"; // Aquí puedes actualizar el contenido del elemento con el subtotal calculado
+subtotal.toLocaleString("es-CL", { 
+  style: "currency", 
+  currency: "CLP" });
+
+
+
     const cotizaciones = JSON.parse(localStorage.getItem("cotizaciones")) || [];
     cotizaciones.push(cotizacion);
     localStorage.setItem("cotizaciones", JSON.stringify(cotizaciones));
@@ -120,4 +142,36 @@ if (build.compatible === false) {
     resumen.style.display = "block";
     formulario.reset();
   });
+});*/
+
+const componentesSeleccionados = [
+    "cpu-001",
+    "ram-001",
+    "ssd-001",
+    "gpu-001",
+    "mb-001",
+    "psu-001"
+];
+
+let subtotal = 0;
+
+componentesSeleccionados.forEach(id => {
+
+    const componente = window.inventarioComponentes.find(
+        producto => producto.id === id
+    );
+
+    if (componente) {
+        console.log("Encontrado:", componente.modelo, componente.precio);
+
+        subtotal += componente.precio;
+    }
 });
+
+console.log("TOTAL:", subtotal);
+
+document.getElementById("subtotal").textContent =
+    subtotal.toLocaleString("es-CL", {
+        style: "currency",
+        currency: "CLP"
+    });

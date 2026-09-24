@@ -2,7 +2,7 @@
    DATOS SIMULADOS PARA EL CATÁLOGO
   */
 
-const inventarioComponentes = [
+window.inventarioComponentes = [
   {
     id: "cpu-001",
     marca: "Intel",
